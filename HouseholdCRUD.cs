@@ -8,7 +8,8 @@ namespace RBIMS_Backend
 {
     public class HouseholdCRUD
     {
-         private string connectionString = "Data Source=rbimstrial.db;";
+         
+        private string connectionString = new DBInit().connectionString;
         //Create User 
         public void addHousehold(string HouseholdAddress){
             using (var connnection = new SqliteConnection(connectionString)){
@@ -17,10 +18,11 @@ namespace RBIMS_Backend
                 var command = connnection.CreateCommand();
                 command.CommandText =
                 @"
-                    INSERT INTO user (household_id, family_id, household_address)
-                    VALUES(NULL, NULL, $household_address);
+                    INSERT INTO household (household_address)
+                    VALUES($household_address);
                 ";
                 command.Parameters.AddWithValue("$household_address", HouseholdAddress);
+
                 command.ExecuteNonQuery();
             }
         }
@@ -41,8 +43,7 @@ namespace RBIMS_Backend
                     while(reader.Read()){
                         Household household = new Household{
                             HouseholdId = reader.GetInt16(0),
-                            FamilyId = reader.GetInt16(1),
-                            HouseholdAddress = reader.GetString(2)
+                            HouseholdAddress = reader.GetString(1)
                         };
                         householdList.Add(household);
                     }
@@ -52,7 +53,7 @@ namespace RBIMS_Backend
         }
 
         //Update User
-        public void updateUser(int householdId, int familyId, string householdAddress){
+        public void updateHousehold(int householdId, int familyId, string householdAddress){
             
             using (var connection = new SqliteConnection(connectionString))
             {
@@ -61,11 +62,10 @@ namespace RBIMS_Backend
                 var command = connection.CreateCommand();
                 command.CommandText = @"UPDATE user 
                                         SET household_address = @household_address,
-                                        WHERE household_id = @household_id AND family_id = $family_id;";
+                                        WHERE household_id = @household_id";
 
                 command.Parameters.AddWithValue("@household_address", householdAddress);
                 command.Parameters.AddWithValue("@household_id", householdId);
-                command.Parameters.AddWithValue("@family_id", familyId);
 
                 int rowsAffected = command.ExecuteNonQuery();
 
@@ -76,7 +76,7 @@ namespace RBIMS_Backend
         }
 
         //Delete User
-        public void deleteUser(int householdId, int familyId){
+        public void deleteHousehold(int householdId, int familyId){
             using (var connnection = new SqliteConnection(connectionString)){
                 connnection.Open();
 
@@ -84,10 +84,9 @@ namespace RBIMS_Backend
                 command.CommandText =
                 @"
                     DELETE FROM household
-                    WHERE household_id = $household_id AND family_id = $family_id;
+                    WHERE household_id = $household_id;
                 ";
                 command.Parameters.AddWithValue("$household_id", householdId);
-                command.Parameters.AddWithValue("$family_id", familyId);
 
                 int rowsAffected = command.ExecuteNonQuery();
 

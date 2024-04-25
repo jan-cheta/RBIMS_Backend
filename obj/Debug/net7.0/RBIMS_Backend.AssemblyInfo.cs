@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RBIMS_Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f01261cdbbd8b88ee0d21fde89d1780ea699bfd0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+86e2a3cce272b9a50b24982c6d5b510edabcc4d0")]
 [assembly: System.Reflection.AssemblyProductAttribute("RBIMS_Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RBIMS_Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

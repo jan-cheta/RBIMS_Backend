@@ -9,34 +9,64 @@ namespace RBIMS_Backend
     public class InhabitantCRUD
     {
          //---Inhabitant Table Section (CRUD)---
-        private string connectionString = "Data Source=rbimstrial.db;";
+       
+        private string connectionString = new DBInit().connectionString;
         //Create Inhabitant 
         public void addInhabitant(string firstName, string lastName, string middleName, string occupation, DateTime dateOfBirth, char sex, string civilStatus, string citizenship, string contactNumber, string educationAttainment, string roleInFamily, string remarks, int familyId, int householdId){
             using (var connnection = new SqliteConnection(connectionString)){
                 connnection.Open();
 
-                var command = connnection.CreateCommand();
-                command.CommandText =
-                @"
-                    INSERT INTO users (first_name, last_name, middle_name, occupation, date_of_birth, sex, civil_status, citizenship, contact_num, educ_attainment, role_in_family, remarks, family_id, household_id)
-                    VALUES($first_name, $last_name, $middle_name, $occupation, $date_of_birth, $sex, $civil_status, $citizenship, $contact_num, $educ_attainment, $role_in_family, $remarks, $family_id, $household_id);
-                ";
-                command.Parameters.AddWithValue("$first_name", firstName);
-                command.Parameters.AddWithValue("$last_name", lastName);
-                command.Parameters.AddWithValue("$middle_name", middleName);
-                command.Parameters.AddWithValue("$occupation", occupation);
-                command.Parameters.AddWithValue("$date_of_birth", dateOfBirth);
-                command.Parameters.AddWithValue("$sex", sex);
-                command.Parameters.AddWithValue("$civil_status", civilStatus);
-                command.Parameters.AddWithValue("$citizenship", citizenship);
-                command.Parameters.AddWithValue("$contact_num", contactNumber);
-                command.Parameters.AddWithValue("$educ_attainment", educationAttainment);
-                command.Parameters.AddWithValue("$role_in_family", roleInFamily);
-                command.Parameters.AddWithValue("$remarks", remarks);
-                command.Parameters.AddWithValue("$family_id", familyId);
-                command.Parameters.AddWithValue("$household_id", householdId);
-                command.ExecuteNonQuery();
+                    var command = connnection.CreateCommand();
+                    command.CommandText =
+                    @"
+                        INSERT INTO inhabitant  (
+                        first_name,
+                        last_name,
+                        middle_name,
+                        occupation,
+                        date_of_birth,
+                        sex,
+                        civil_status,
+                        citizenship,
+                        contact_num,
+                        educ_attainment,
+                        role_in_family,
+                        remarks,
+                        family_id
+                    )
+                        VALUES($first_name, $last_name, $middle_name, $occupation, $date_of_birth, $sex, $civil_status, $citizenship, $contact_num, $educ_attainment, $role_in_family, $remarks, $family_id);
+                    ";
+                    command.Parameters.AddWithValue("$first_name", firstName);
+                    command.Parameters.AddWithValue("$last_name", lastName);
+                    command.Parameters.AddWithValue("$middle_name", middleName);
+                    command.Parameters.AddWithValue("$occupation", occupation);
+                    command.Parameters.AddWithValue("$date_of_birth", dateOfBirth);
+                    command.Parameters.AddWithValue("$sex", sex);
+                    command.Parameters.AddWithValue("$civil_status", civilStatus);
+                    command.Parameters.AddWithValue("$citizenship", citizenship);
+                    command.Parameters.AddWithValue("$contact_num", contactNumber);
+                    command.Parameters.AddWithValue("$educ_attainment", educationAttainment);
+                    command.Parameters.AddWithValue("$role_in_family", roleInFamily);
+                    command.Parameters.AddWithValue("$remarks", remarks);
+                    command.Parameters.AddWithValue("$family_id", familyId);
+                    command.ExecuteNonQuery();
             }
+        }
+
+        private bool validateFamilyIdAndHouseholdId(int household_id, int family_id){
+            int count = 0;
+            using(var connection = new SqliteConnection(connectionString)){
+                connection.Open();
+
+                 // Create command to count rows
+                string countQuery = $"SELECT * FROM inhabitant WHERE household_id = {household_id} AND family_id = {family_id};";
+                using (SqliteCommand command = new SqliteCommand(countQuery, connection))
+                {
+                    // Execute the command and get the count
+                    count = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+            return count > 0;
         }
 
         //Read Inhabitant

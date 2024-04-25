@@ -21,6 +21,5 @@ namespace RBIMS_Backend
         public string RoleInFamily { get; set; } = string.Empty;
         public string Remarks { get; set; } = string.Empty;
         public int FamilyId { get; set; }
-        public int HouseholdId { get; set; }
     }
 }

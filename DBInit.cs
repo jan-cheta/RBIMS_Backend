@@ -8,7 +8,7 @@ namespace RBIMS_Backend
 {
     public class DBInit
     {
-        private string connectionString = "Data Source=rbimstrial.db;";
+        public string connectionString = "Data Source=rbimstrial.db;";
         //DATABASE INITIALIZATION
         public void initSuperAdmin(){
             int count = 0;
@@ -56,11 +56,14 @@ namespace RBIMS_Backend
                         pass_word TEXT NOT NULL 
                     );
 
+                    CREATE TABLE IF NOT EXISTS family (
+                        family_id INTEGER PRIMARY KEY,
+                        household_id INTEGER REFERENCES household(household_id),
+                    );
+
                     CREATE TABLE IF NOT EXISTS household (
-                        household_id INTEGER NOT NULL,
-                        family_id INTEGER NOT NULL,
-                        household_address TEXT, 
-                        PRIMARY KEY (household_id, family_id)
+                        household_id INTEGER PRIMARY KEY,
+                        household_address TEXT,
                     );
 
                     CREATE TABLE IF NOT EXISTS inhabitant (
@@ -75,10 +78,9 @@ namespace RBIMS_Backend
                         citizenship TEXT NOT NULL,
                         contact_num TEXT,
                         educ_attainment TEXT,
-                        role_in_family TEXT
+                        role_in_family TEXT,
                         remarks TEXT,
-                        family_id INTEGER REFERENCES household(family_id),
-                        household_id INTEGER REFERENCES household(household_id)
+                        family_id INTEGER REFERENCES family(family_id)
                     );
 
                     CREATE TABLE IF NOT EXISTS certification_request_form (

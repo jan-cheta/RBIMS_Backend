@@ -9,7 +9,8 @@ namespace RBIMS_Backend
     public class UserCRUD
     {
         //---Users Table Section (CRUD)---
-        private string connectionString = "Data Source=rbimstrial.db;";
+        
+        private string connectionString = new DBInit().connectionString;
         //Create User 
         public void addUser(string username, string firstName, string lastName, string middleName, string password, string userLevel = "user"){
             using (var connnection = new SqliteConnection(connectionString)){

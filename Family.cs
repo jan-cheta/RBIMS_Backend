@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace RBIMS_Backend
 {
-    public class Household
+    public class Family
     {
-       public int HouseholdId{ get; set; }
-       public string HouseholdAddress { get; set;} = string.Empty;
+        public int FamilyId{ get; set; }
+        public int HouseholdId { get; set; }
     }
 }
