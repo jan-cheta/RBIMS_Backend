@@ -72,8 +72,8 @@ namespace RBIMS_Backend
                 if(rowsAffected < 1){
                     throw new EntityNotFoundException("Household/Family Not Found or No Updates Were Made.");
                 }
+            }
         }
-    }
 
         //Delete User
         public void deleteUser(int householdId, int familyId){

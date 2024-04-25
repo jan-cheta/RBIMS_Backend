@@ -19,7 +19,7 @@ namespace RBIMS_Backend
                 command.CommandText =
                 @"
                     INSERT INTO users (first_name, last_name, middle_name, occupation, date_of_birth, sex, civil_status, citizenship, contact_num, educ_attainment, role_in_family, remarks, family_id, household_id)
-                    VALUES(NULL, $first_name, $last_name, $middle_name, $occupation, $date_of_birth, $sex, $civil_status, $citizenship, $contact_num, $educ_attainment, $role_in_family, $remarks, $family_id, $household_id);
+                    VALUES($first_name, $last_name, $middle_name, $occupation, $date_of_birth, $sex, $civil_status, $citizenship, $contact_num, $educ_attainment, $role_in_family, $remarks, $family_id, $household_id);
                 ";
                 command.Parameters.AddWithValue("$first_name", firstName);
                 command.Parameters.AddWithValue("$last_name", lastName);

@@ -13,6 +13,13 @@ namespace RBIMS_Backend
 
             //UserCRUD
             UserCRUD userCRUD = new UserCRUD();
+            userCRUD.addUser("jasella", "james", "anch", "dyl", "buddyblast");
+            userCRUD.updateUser(2, "jaslla", "jaes", "anh", "dl", "buddybla");
+            List<User> userList = userCRUD.readUser();
+            foreach(User user in userList){
+                Console.WriteLine(user.Username + " : " + user.Password);
+            }
+            userCRUD.deleteUser(2);
         }
         
         

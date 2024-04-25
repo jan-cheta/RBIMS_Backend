@@ -19,7 +19,7 @@ namespace RBIMS_Backend
                 command.CommandText =
                 @"
                     INSERT INTO user (username, first_name, last_name, middle_name, user_level, pass_word)
-                    VALUES(NULL, $username, $first_name, $last_name, $middle_name, $user_level, $pass_word);
+                    VALUES($username, $first_name, $last_name, $middle_name, $user_level, $pass_word);
                 ";
                 command.Parameters.AddWithValue("$username", username);
                 command.Parameters.AddWithValue("$first_name", firstName);
@@ -62,7 +62,7 @@ namespace RBIMS_Backend
         }
 
         //Update User
-        public void updateUser(int userId, string username, string firstName, string lastName, string middleName, string userLevel, string password){
+        public void updateUser(int userId, string username, string firstName, string lastName, string middleName, string password, string userLevel = "user"){
             
             using (var connection = new SqliteConnection(connectionString))
             {
