@@ -32,9 +32,10 @@ namespace RBIMS_Backend
                         educ_attainment,
                         role_in_family,
                         remarks,
-                        family_id
+                        family_id,
+                        household_id
                     )
-                        VALUES($first_name, $last_name, $middle_name, $occupation, $date_of_birth, $sex, $civil_status, $citizenship, $contact_num, $educ_attainment, $role_in_family, $remarks, $family_id);
+                        VALUES($first_name, $last_name, $middle_name, $occupation, $date_of_birth, $sex, $civil_status, $citizenship, $contact_num, $educ_attainment, $role_in_family, $remarks, $family_id, $household_id);
                     ";
                     command.Parameters.AddWithValue("$first_name", firstName);
                     command.Parameters.AddWithValue("$last_name", lastName);
@@ -49,6 +50,7 @@ namespace RBIMS_Backend
                     command.Parameters.AddWithValue("$role_in_family", roleInFamily);
                     command.Parameters.AddWithValue("$remarks", remarks);
                     command.Parameters.AddWithValue("$family_id", familyId);
+                    command.Parameters.AddWithValue("$household_id", householdId);
                     command.ExecuteNonQuery();
             }
         }
@@ -94,8 +96,11 @@ namespace RBIMS_Backend
                             CivilStatus = reader.GetString(7),
                             Citizenship = reader.GetString(8),
                             ContactNumber = reader.GetString(9),
-                            EducationAttainment = reader.GetString(10),
-
+                            RoleInFamily = reader.GetString(10),
+                            Remarks = reader.GetString(11),
+                            EducationAttainment = reader.GetString(12),
+                            FamilyId = reader.GetInt32(13),
+                            HouseholdId = reader.GetInt32(14)
                         };
                         inhabitantList.Add(inhabitant);
                     }

@@ -42,7 +42,7 @@ namespace RBIMS_Backend
                 using(var reader = command.ExecuteReader()){
                     while(reader.Read()){
                         Household household = new Household{
-                            HouseholdId = reader.GetInt16(0),
+                            HouseholdId = reader.GetInt32(0),
                             HouseholdAddress = reader.GetString(1)
                         };
                         householdList.Add(household);
@@ -76,7 +76,7 @@ namespace RBIMS_Backend
         }
 
         //Delete User
-        public void deleteHousehold(int householdId, int familyId){
+        public void deleteHousehold(int householdId){
             using (var connnection = new SqliteConnection(connectionString)){
                 connnection.Open();
 

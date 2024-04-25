@@ -58,12 +58,12 @@ namespace RBIMS_Backend
 
                     CREATE TABLE IF NOT EXISTS family (
                         family_id INTEGER PRIMARY KEY,
-                        household_id INTEGER REFERENCES household(household_id),
+                        household_id INTEGER REFERENCES household(household_id)
                     );
 
                     CREATE TABLE IF NOT EXISTS household (
                         household_id INTEGER PRIMARY KEY,
-                        household_address TEXT,
+                        household_address TEXT
                     );
 
                     CREATE TABLE IF NOT EXISTS inhabitant (
@@ -80,7 +80,8 @@ namespace RBIMS_Backend
                         educ_attainment TEXT,
                         role_in_family TEXT,
                         remarks TEXT,
-                        family_id INTEGER REFERENCES family(family_id)
+                        family_id INTEGER REFERENCES family(family_id),
+                        household_id INTEGER REFERENCES household(household_id)
                     );
 
                     CREATE TABLE IF NOT EXISTS certification_request_form (

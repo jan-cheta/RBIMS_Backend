@@ -34,15 +34,18 @@ namespace RBIMS_Backend
                         
             DateTime date_of_birth = new DateTime(2003,5,12);
             char sex = 'm';
-            int family_id = 2, household_id = 2;
+            int family_id = 1, household_id = 1;
 
             HouseholdCRUD householdCRUD  = new HouseholdCRUD();
 
-            householdCRUD.addHousehold(2,2,"ching ching");
+            FamilyCRUD familyCRUD = new FamilyCRUD();
+
+            householdCRUD.addHousehold("blk 17");
+            familyCRUD.addFamily(1);
 
             InhabitantCRUD inhabitantCRUD = new InhabitantCRUD();
 
-            inhabitantCRUD.addInhabitant(first_name,last_name,middle_name,occupation,date_of_birth,sex,civil_status,citizenship,contact_num,educ_attainment,role_in_family,remarks,family_id,household_id);
+            inhabitantCRUD.addInhabitant(first_name,last_name,middle_name,occupation,date_of_birth,sex,civil_status,citizenship,contact_num,educ_attainment,role_in_family,remarks,family_id, household_id);
         }
         
         
