@@ -38,3 +38,4 @@ C:\Users\Cheta\Desktop\Visual Studio Things\C#\IM\RBIMS_Backend\bin\Debug\net7.0
 C:\Users\Cheta\Desktop\Visual Studio Things\C#\IM\RBIMS_Backend\bin\Debug\net7.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\Cheta\Desktop\Visual Studio Things\C#\IM\RBIMS_Backend\bin\Debug\net7.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\Cheta\Desktop\Visual Studio Things\C#\IM\RBIMS_Backend\bin\Debug\net7.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\Cheta\Desktop\Visual Studio Things\C#\IM\RBIMS_Backend\obj\Debug\net7.0\RBIMS_Backend.sourcelink.json

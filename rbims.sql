@@ -1,5 +1,6 @@
--- CREATE TABLE IF NOT EXISTS users (
+-- CREATE TABLE IF NOT EXISTS user (
 --     user_id INTEGER PRIMARY KEY,
+--     username TEXT UNIQUE,
 --     first_name TEXT NOT NULL,
 --     last_name TEXT NOT NUll,
 --     middle_name TEXT NOT NULL,
@@ -11,12 +12,11 @@
 --     household_id INTEGER NOT NULL,
 --     family_id INTEGER NOT NULL,
 --     household_address TEXT, 
---     no_of_families INTEGER,
 --     PRIMARY KEY (household_id, family_id)
 -- );
 
--- CREATE TABLE IF NOT EXISTS resident (
---     resident_id INTEGER PRIMARY KEY,
+-- CREATE TABLE IF NOT EXISTS inhabitant (
+--     inhabitant_id INTEGER PRIMARY KEY,
 --     first_name TEXT NOT NULL,
 --     last_name TEXT NOT NUll,
 --     middle_name TEXT NOT NULL,
@@ -35,7 +35,7 @@
 
 -- CREATE TABLE IF NOT EXISTS certification_request_form (
 --     request_id INTEGER PRIMARY KEY,
---     resident_id INTEGER REFERENCES resident(resident_id),
+--     inhabitant_id INTEGER REFERENCES resident(inhabitant_id),
 --     date_requested DATE DEFAULT CURRENT_DATE,
 --     form_status TEXT NOT NULL,
 --     user_id INTEGER REFERENCES users(user_id)
@@ -44,7 +44,7 @@
 -- CREATE TABLE IF NOT EXISTS certification_form (
 --     certification_id INTEGER PRIMARY KEY,
 --     request_id INTEGER REFERENCES certification_request_form(request_id),
---     resident_id INTEGER REFERENCES resident(resident_id),
+--     inhabitant_id INTEGER REFERENCES resident(inhabitant_id),
 --     date_issued DATE DEFAULT CURRENT_DATE,
 --     cert_type TEXT NOT NULL,
 --     purpose TEXT NOT NULL
