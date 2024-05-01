@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Data.Sqlite;
+using System.Data.SQLite;
 
 namespace RBIMS_Backend
 {
@@ -11,40 +11,18 @@ namespace RBIMS_Backend
         public string connectionString = "Data Source=rbimstrial.db;";
         //DATABASE INITIALIZATION
         public void initSuperAdmin(){
-            int count = 0;
-            using(var connnection = new SqliteConnection(connectionString)){
-                connnection.Open();
+            UserCRUD crud = new UserCRUD();
+            List<User> userList = crud.readUser();
 
-                var command = connnection.CreateCommand();
-                command.CommandText =
-                @"
-                    SELECT COUNT(*) FROM user                
-                ";
-                
-                count = Convert.ToInt16(command.ExecuteScalar());
-            }
-
-            if(count == 0){
-                using(var connnection = new SqliteConnection(connectionString)){
-                connnection.Open();
-                
-                var command = connnection.CreateCommand();
-                command.CommandText =
-                @"
-                    INSERT INTO user
-                    VALUES(NULL, 'krocojan', 'Jan Ryan', 'Ancheta', 'Arpon', 'admin', 'kroc');                
-                ";
-                
-                command.ExecuteNonQuery();
-            }
+            if(userList.Count()<1){
+                crud.addUser("rbimsSiblot", "rbims", "rbims", "rbims", "rbimsAdmin", "admin");
             }
         }
         public void initDB(){
-            using (var connnection = new SqliteConnection(connectionString)){
-                connnection.Open();
-
-                var command = connnection.CreateCommand();
-                command.CommandText =
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString)){
+                connection.Open();
+                
+                string commandText =
                 @"
                     CREATE TABLE IF NOT EXISTS user (
                         user_id INTEGER PRIMARY KEY,
@@ -71,6 +49,7 @@ namespace RBIMS_Backend
                         first_name TEXT NOT NULL,
                         last_name TEXT NOT NUll,
                         middle_name TEXT NOT NULL,
+                        suffix TEXT,
                         occupation TEXT NOT NULL,
                         date_of_birth DATE NOT NULL,
                         sex char(1) NOT NULL,
@@ -102,7 +81,10 @@ namespace RBIMS_Backend
                     );
 
                 ";
-                command.ExecuteNonQuery();
+                using (SQLiteCommand command = new SQLiteCommand(commandText,connection)){
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
             }
             initSuperAdmin();
         }

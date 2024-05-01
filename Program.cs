@@ -24,6 +24,7 @@ namespace RBIMS_Backend
             string first_name = "a",
                         last_name = "b",
                         middle_name = "c",
+                        suffix = "jr",
                         occupation = "d",
                         civil_status = "g",
                         citizenship = "df",
@@ -45,7 +46,7 @@ namespace RBIMS_Backend
 
             InhabitantCRUD inhabitantCRUD = new InhabitantCRUD();
 
-            inhabitantCRUD.addInhabitant(first_name,last_name,middle_name,occupation,date_of_birth,sex,civil_status,citizenship,contact_num,educ_attainment,role_in_family,remarks,family_id, household_id);
+            inhabitantCRUD.addInhabitant(first_name,last_name,middle_name,suffix,occupation,date_of_birth,sex,civil_status,citizenship,contact_num,educ_attainment,role_in_family,remarks,family_id, household_id);
         }
         
         

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Data.Sqlite;
+using System.Data.SQLite;
 
 namespace RBIMS_Backend
 {
@@ -11,33 +11,35 @@ namespace RBIMS_Backend
     {
         private string connectionString = new DBInit().connectionString;
         public void addFamily(int householdId){
-            using(var connection = new SqliteConnection(connectionString)){
+            using(SQLiteConnection connection = new SQLiteConnection(connectionString)){
                 connection.Open();
 
-                var command = connection.CreateCommand();
-                command.CommandText = 
+                string commandText = 
                 @"
                     INSERT INTO family(household_id)
                     VALUES($household_id);
                 ";
-                command.Parameters.AddWithValue("household_id", householdId);
 
-                command.ExecuteNonQuery();
+                using(SQLiteCommand command = new SQLiteCommand(commandText,connection)){
+                    command.Parameters.AddWithValue("household_id", householdId);
+
+                    command.ExecuteNonQuery();
+                }
             }
         }
 
         public List<Family> readFamily(){
             List<Family> familyList = new List<Family>();
-            using (var connnection = new SqliteConnection(connectionString)){
-                connnection.Open();
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString)){
+                connection.Open();
 
-                var command = connnection.CreateCommand();
-                command.CommandText =
+                string commandText =
                 @"
                     SELECT * FROM family;
                 ";
                 
-                using(var reader = command.ExecuteReader()){
+                using(SQLiteCommand command = new SQLiteCommand(commandText,connection))
+                using(SQLiteDataReader reader = command.ExecuteReader()){
                     while(reader.Read()){
                         Family family = new Family{
                             FamilyId = reader.GetInt32(0),
@@ -46,48 +48,52 @@ namespace RBIMS_Backend
                         familyList.Add(family);
                     }
                 }
+                connection.Close();
             }
             return familyList;
         }
 
         public void updateFamily(int familyId, int householdId){
-             using (var connection = new SqliteConnection(connectionString))
-            {
+             using (SQLiteConnection connection = new SQLiteConnection(connectionString)){
                 connection.Open();
 
-                var command = connection.CreateCommand();
-                command.CommandText = @"UPDATE user 
+                string commandText = @"UPDATE user 
                                         SET household_id = @household_id,
                                         WHERE family_id = @family_id";
 
-                command.Parameters.AddWithValue("@family_id", familyId);
-                command.Parameters.AddWithValue("@household_id", householdId);
+                using(SQLiteCommand command = new SQLiteCommand(commandText, connection)){
+                    command.Parameters.AddWithValue("@family_id", familyId);
+                    command.Parameters.AddWithValue("@household_id", householdId);
 
-                int rowsAffected = command.ExecuteNonQuery();
+                    int rowsAffected = command.ExecuteNonQuery();
 
-                if(rowsAffected < 1){
-                    throw new EntityNotFoundException("Household/Family Not Found or No Updates Were Made.");
+                    if(rowsAffected < 1){
+                        throw new EntityNotFoundException("Household/Family Not Found or No Updates Were Made.");
+                    }
                 }
+                connection.Close();
             }
         }
 
         public void deleteFamily(int familyId){
-             using (var connnection = new SqliteConnection(connectionString)){
-                connnection.Open();
+             using (SQLiteConnection connection = new SQLiteConnection(connectionString)){
+                connection.Open();
 
-                var command = connnection.CreateCommand();
-                command.CommandText =
+                string commandText =
                 @"
                     DELETE FROM family
                     WHERE family_id = $family_id;
                 ";
-                command.Parameters.AddWithValue("$family_id", familyId);
+                using(SQLiteCommand command = new SQLiteCommand(commandText, connection)){
+                    command.Parameters.AddWithValue("$family_id", familyId);
 
-                int rowsAffected = command.ExecuteNonQuery();
+                    int rowsAffected = command.ExecuteNonQuery();
 
-                if(rowsAffected < 1){
-                    throw new EntityNotFoundException("Household/Family Not Found");
+                    if(rowsAffected < 1){
+                        throw new EntityNotFoundException("Household/Family Not Found");
+                    }
                 }
+                connection.Close();
             }
         }
     }
