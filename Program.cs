@@ -21,32 +21,34 @@ namespace RBIMS_Backend
             // }
             // userCRUD.deleteUser(2);
 
-            string first_name = "a",
-                        last_name = "b",
-                        middle_name = "c",
-                        suffix = "jr",
-                        occupation = "d",
-                        civil_status = "g",
-                        citizenship = "df",
-                        contact_num = "dfgds",
-                        educ_attainment = "gsdg",
-                        role_in_family = "dsgsdg",
-                        remarks = "fgsdf";
+            // string first_name = "a",
+            //             last_name = "b",
+            //             middle_name = "c",
+            //             suffix = "jr",
+            //             occupation = "d",
+            //             civil_status = "g",
+            //             citizenship = "df",
+            //             contact_num = "dfgds",
+            //             educ_attainment = "gsdg",
+            //             role_in_family = "dsgsdg",
+            //             remarks = "fgsdf";
                         
-            DateTime date_of_birth = new DateTime(2003,5,12);
-            char sex = 'm';
-            int family_id = 1, household_id = 1;
+            // DateTime date_of_birth = new DateTime(2003,5,12);
+            // char sex = 'm';
+            // int family_id = 1, household_id = 1;
 
-            HouseholdCRUD householdCRUD  = new HouseholdCRUD();
+            // HouseholdCRUD householdCRUD  = new HouseholdCRUD();
 
-            FamilyCRUD familyCRUD = new FamilyCRUD();
+            // FamilyCRUD familyCRUD = new FamilyCRUD();
 
-            householdCRUD.addHousehold("blk 17");
-            familyCRUD.addFamily(1);
+            // householdCRUD.addHousehold("blk 17");
+            // familyCRUD.addFamily(1);
 
-            InhabitantCRUD inhabitantCRUD = new InhabitantCRUD();
+            // InhabitantCRUD inhabitantCRUD = new InhabitantCRUD();
 
-            inhabitantCRUD.addInhabitant(first_name,last_name,middle_name,suffix,occupation,date_of_birth,sex,civil_status,citizenship,contact_num,educ_attainment,role_in_family,remarks,family_id, household_id);
+            // inhabitantCRUD.addInhabitant(first_name,last_name,middle_name,suffix,occupation,date_of_birth,sex,civil_status,citizenship,contact_num,educ_attainment,role_in_family,remarks,family_id, household_id);
+            // InhabitantCRUD inhabitantCRUD = new InhabitantCRUD();
+            // Console.WriteLine(inhabitantCRUD.readInhabitant());
         }
         
         

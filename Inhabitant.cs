@@ -14,7 +14,7 @@ namespace RBIMS_Backend
         public string Suffix { get; set; } = string.Empty;
         public string Occupation { get; set; } = string.Empty;
         public DateTime DateOfBirth { get; set; }
-        public char Sex { get; set; }
+        public string Sex { get; set; }
         public string CivilStatus { get; set; } = string.Empty;
         public string Citizenship { get; set; } = string.Empty;
         public string ContactNumber { get; set; } = string.Empty;

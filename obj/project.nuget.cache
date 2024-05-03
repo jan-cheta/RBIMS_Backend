@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yjf+J120N56Kvheo+e4167T7rT1Q0vPolh8RrDlEq6vUQk+hL+oHUmD9l7eFe1iWSHGgIQUSIKPoOOv257lkSA==",
+  "dgSpecHash": "JuEqXXLVawCgJsQQCBjSm0Pa6UjET+Lo+Qm2bJLzuj+aS1Eb4WpizYfU7FmUzmkyZvuePJIxueBiBoc/idu0VQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Cheta\\Desktop\\Visual Studio Things\\C#\\IM\\RBIMS_Backend\\RBIMS_Backend.csproj",
   "expectedPackageFiles": [
@@ -33,7 +33,11 @@
     "C:\\Users\\Cheta\\.nuget\\packages\\system.security.cryptography.protecteddata\\4.7.0\\system.security.cryptography.protecteddata.4.7.0.nupkg.sha512",
     "C:\\Users\\Cheta\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
     "C:\\Users\\Cheta\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
-    "C:\\Users\\Cheta\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
+    "C:\\Users\\Cheta\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
+    "C:\\Users\\Cheta\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.15\\microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
+    "C:\\Users\\Cheta\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.15\\microsoft.windowsdesktop.app.ref.7.0.15.nupkg.sha512",
+    "C:\\Users\\Cheta\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.15\\microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512",
+    "C:\\Users\\Cheta\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.15\\microsoft.netcore.app.host.win-x64.7.0.15.nupkg.sha512"
   ],
   "logs": []
 }
