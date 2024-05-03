@@ -34,5 +34,18 @@ namespace RBIMS_Backend
             }
             return true;
         }
+
+        public List<Inhabitant> findHeadOfFamily(int householdId){
+            List<Inhabitant> inhabitantList = crudInhabitant.readInhabitant();
+            List<Inhabitant> familyHeadList = new List<Inhabitant>();
+
+            foreach(Inhabitant inhabitant in inhabitantList){
+                if(inhabitant.HouseholdId == householdId){
+                    familyHeadList.Add(inhabitant);
+                }
+            }
+
+            return familyHeadList;
+        }
     }
 }
