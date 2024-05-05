@@ -10,17 +10,7 @@ namespace RBIMS_Backend
         HouseholdCRUD crudHousehold = new HouseholdCRUD();
         InhabitantCRUD  crudInhabitant = new InhabitantCRUD();
         FamilyCRUD crudFamily = new FamilyCRUD();
-        public bool validateNewHouseHold(string householdAddress){
-            List<Household> householdList = crudHousehold.readHousehold();
-
-            foreach(Household household in householdList){
-                if(household.HouseholdAddress.Equals(householdAddress)){
-                    return false;
-                }
-            }
-            return true;
-        }
-
+        
         public bool validateNewInhabitant(string first_name, string last_name, string middle_name, string suffix){
             List<Inhabitant> inhabitantList= crudInhabitant.readInhabitant();
             
