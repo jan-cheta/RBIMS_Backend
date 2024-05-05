@@ -16,11 +16,13 @@ namespace RBIMS_Backend
             DataTable householdDT = new DataTable();
 
             householdDT.Columns.Add("Household ID", typeof(int));
-            householdDT.Columns.Add("Address", typeof(string));
-            
+            householdDT.Columns.Add("House No.", typeof(string));
+            householdDT.Columns.Add("Street", typeof(string));
+            householdDT.Columns.Add("Sitio", typeof(string));
+
             List<Household> householdList = householdCRUD.readHousehold();
             foreach(Household household in householdList){
-                householdDT.Rows.Add(household.HouseholdId,household.HouseholdAddress);
+                householdDT.Rows.Add(household.HouseholdId,household.HouseNo,household.Street,household.Sitio);
             }
 
             return householdDT;

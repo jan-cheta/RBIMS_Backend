@@ -41,7 +41,9 @@ namespace RBIMS_Backend
 
                     CREATE TABLE IF NOT EXISTS household (
                         household_id INTEGER PRIMARY KEY,
-                        household_address TEXT
+                        house_no TEXT,
+                        street TEXT,
+                        sitio TEXT,
                     );
 
                     CREATE TABLE IF NOT EXISTS inhabitant (

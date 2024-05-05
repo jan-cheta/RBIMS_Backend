@@ -8,6 +8,8 @@ namespace RBIMS_Backend
     public class Household
     {
        public int HouseholdId{ get; set; }
-       public string HouseholdAddress { get; set;} = string.Empty;
+       public string HouseNo { get; set;} = string.Empty;
+       public string Street { get; set;} = string.Empty;
+       public string Sitio { get; set;} = string.Empty;
     }
 }
